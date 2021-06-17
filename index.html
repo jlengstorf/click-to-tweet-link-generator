@@ -24,6 +24,7 @@
       h1 {
         font-size: 1.5rem;
         line-height: 1.1;
+        margin: 0 0 2rem;
         text-align: center;
       }
 
@@ -56,6 +57,12 @@
       .generated-link {
         margin-top: 3rem;
       }
+
+      footer {
+        font-size: 0.875rem;
+        margin: 4rem 0 2rem;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
@@ -78,6 +85,15 @@
         name="generated-link"
       ></textarea>
     </main>
+
+    <footer>
+      <nav>
+        <a href="https://twitter.com/jlengstorf">built by Jason Lengstorf</a> ·
+        <a href="https://github.com/jlengstorf/click-to-tweet-link-generator"
+          >source code</a
+        >
+      </nav>
+    </footer>
 
     <script>
       function generateLink(event) {
