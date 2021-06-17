@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Twitter "Click To Tweet" Link Generator</title>
+
+    <style>
+      html {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+          Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+          'Segoe UI Symbol';
+        font-size: 18px;
+        line-height: 1.45;
+      }
+
+      main {
+        margin: 3rem auto;
+        max-width: 48ch;
+        width: 90vw;
+      }
+
+      h1 {
+        font-size: 1.5rem;
+        line-height: 1.1;
+        text-align: center;
+      }
+
+      label,
+      input,
+      textarea,
+      button {
+        display: block;
+        font-size: 1rem;
+      }
+
+      label,
+      button {
+        margin-top: 1rem;
+      }
+
+      input,
+      textarea {
+        width: 100%;
+      }
+
+      textarea {
+        height: 4rem;
+      }
+
+      button {
+        font-size: 1.25rem;
+      }
+
+      .generated-link {
+        margin-top: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Twitter "Click To Tweet" Link Generator</h1>
+      <form>
+        <label for="text">Tweet text</label>
+        <textarea name="text" id="text"></textarea>
+
+        <label for="url">URL to share</label>
+        <input type="url" name="url" id="url" value="" />
+
+        <button type="submit">Generate Click-to-Tweet Link</button>
+      </form>
+
+      <textarea
+        class="generated-link"
+        disabled
+        value=""
+        name="generated-link"
+      ></textarea>
+    </main>
+
+    <script>
+      function generateLink(event) {
+        event.preventDefault();
+
+        const data = new FormData(event.target);
+        const text = encodeURIComponent(data.get('text'));
+        const url = encodeURIComponent(data.get('url'));
+        const link = `https://twitter.com/intent/tweet?text=${text}&url=${url}`;
+
+        document.querySelector('.generated-link').value = link;
+      }
+
+      const form = document.querySelector('form');
+
+      form.addEventListener('submit', (event) => generateLink(event));
+    </script>
+  </body>
+</html>
